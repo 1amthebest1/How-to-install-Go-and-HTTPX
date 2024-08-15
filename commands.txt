@@ -1,0 +1,16 @@
+# Download and install Go
+wget https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+
+# Clone and build httpx
+cd ~/Desktop
+git clone https://github.com/projectdiscovery/httpx.git
+cd httpx
+go mod tidy
+go mod download
+go build -o httpx ./cmd/httpx
+sudo mv httpx /usr/local/bin/
+
+# Verify installation
+httpx -h
